@@ -1,0 +1,49 @@
+version: "3.3"
+
+volumes:
+  database_data:
+
+services:
+  mysqldb:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - database_data:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: base_system
+  phpmyadmin:
+    image: phpmyadmin:apache
+    ports:
+      - 8306:80
+    depends_on:
+      - mysqldb
+    environment:
+      PMA_HOST: mysqldb
+      MYSQL_ROOT_PASSWORD: rootpass
+  # app:
+  #   build: ./docker-setting
+  #   image: medo972283/go-alpine:0.0.1
+  #   working_dir: /srv/app
+  #   volumes:
+  #     - ./:/srv/app:delegated
+  #   entrypoint: go run .
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - mysqldb
+  # backend:
+  #   image: nginx:stable-alpine
+  #   volumes:
+  #     - ./:/srv/app:ro
+  #     - ./docker/default.conf:/etc/nginx/conf.d/default.conf:ro
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - app
+  #     - mysqldb

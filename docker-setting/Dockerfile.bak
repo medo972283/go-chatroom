@@ -1,0 +1,21 @@
+FROM golang:alpine
+
+USER root
+
+RUN apk add --no-cache ca-certificates curl tar xz openssl
+
+ENV APP_DIR=/src/app
+
+RUN mkdir -p ${APP_DIR}
+
+WORKDIR ${APP_DIR}
+
+COPY . .
+
+RUN go mod download
+
+RUN go build -o app
+
+ENTRYPOINT ["./app"]
+
+EXPOSE 3000
