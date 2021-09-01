@@ -1,0 +1,104 @@
+{{ define "chatroom" }}
+{{ template "header" . }}
+
+<style>
+</style>
+
+<script src="js/chatroom.js"></script>
+<script>
+  const ROOM_ID = '{{ .RoomID }}';
+</script>
+
+<style>
+
+  .participants-list {
+    padding: 1em;
+    border: black 2px solid;
+    border-radius: 5px;
+    min-height: 40vh;
+    max-height: 40vh;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+
+  .participant-tag {
+    display: block;
+    text-align:right;
+    margin:0px auto 0px auto;
+    padding: 5px;
+    background-color: cadetblue;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    border: white 2px solid;
+    border-radius: 5%;
+  }
+
+  #chatroomMsgList {
+    min-height: 40vh;
+    max-height: 40vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    pointer-events: unset !important;
+  }
+
+  .send-block {
+    margin-top: 5vh;
+  }
+
+  .send-text {
+    margin-bottom: 10px;
+    width: 30vw;
+  }
+
+  .toast-header {
+    background-color: seashell;
+  }
+
+  .toast-body {
+    background-color: snow;
+  }
+
+</style>
+
+<div class="container">
+
+  <!-- Info -->
+  <div class="row">
+    <div class="col-lg-12">
+      <nav class="navbar navbar-light bg-light room-title">
+        <div class="navbar-brand chatroom-name">房名： </div>
+        <div class="navbar-brand chatroom-host">主持人： </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row room-panel">
+    <!-- Members -->
+    <div class="col-lg-4">
+      <div class="participants-list">
+      </div>
+    </div>
+    <!-- Messages -->
+    <div class="col-lg-8 bg-dark">
+      <div aria-live="polite" class="position-relative">
+        <div class="toast-container position-absolute top-0 end-0 p-3" id="chatroomMsgList">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Send message -->
+  <div class="row send-block">
+    <div class="col-lg-12">
+      <form class="d-flex justify-content-end">
+        <textarea class="send-text" name="Content" placeholder="Write something here"></textarea>
+      </form>
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ template "footer" }}
+{{ end }}

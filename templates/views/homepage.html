@@ -1,0 +1,69 @@
+{{ define "homepage" }}
+{{ template "header" . }}
+
+<style>  
+  .cr-roomlist-title {
+    font-size: 1.5rem;
+  }
+
+  .cr-roomlist {
+    margin-top: 5vh;
+  }
+</style>
+
+<script src="js/homepage.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <nav class="navbar navbar-light bg-light cr-roomlist-toolbar">
+        <span class="navbar-brand cr-roomlist-title">聊天室清單</span>
+        <div class="d-flex">
+          <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#createModalBlock">新建聊天室</button>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="cr-roomlist">
+        <table id="cr-roomlist-table" class="display bg-light">
+          <thead>
+            <tr>
+              <th>聊天室名稱</th>
+              <th>室長</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: chatroom creation -->
+<div class="modal fade" id="createModalBlock" tabindex="-1" aria-labelledby="createModalTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createModalTitle">新建聊天室</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-create-chatroom">
+          <label for="nameInput">房名： </label>
+          <input type="text" id="nameInput" name="chatroomName"/>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary newroom-close-btn" data-bs-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-primary newroom-check-btn">新增</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ template "footer" }}
+{{ end }}

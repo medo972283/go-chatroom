@@ -1,0 +1,17 @@
+.cr-navbar {
+  margin-top: 5vh;
+}
+
+.cr-row-dot5 {
+  margin: .5rem !important;
+}
+
+.cr-row-2 {
+  margin: 2rem !important;
+}
+
+.cr-error-msg {
+  color: red;
+  font: bold;
+  font-size: 0.8rem;  
+}
