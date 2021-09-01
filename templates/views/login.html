@@ -1,0 +1,96 @@
+{{ define "login" }}
+{{ template "header" }}
+
+<style>
+  .cr-login-panel {
+    margin: 15vh 15vw;
+    padding: 1rem;
+    background-color: rgb(230, 230, 230);
+    border-radius: 3%;
+    border: black 0.5rem solid;
+  }
+
+  .cr-login-left-panel{
+    padding: 1rem;
+    display:block;
+    margin: auto;
+  }
+  .cr-login-right-panel{
+    padding: 1rem;
+  }
+</style>
+
+<script src="js/login.js"></script>
+
+<div class="container">
+  <div class="row cr-login-panel">
+
+    <div class="col-lg-5 cr-login-left-panel">
+      <img src="images/go-language-icon.png">
+    </div>
+
+    <div class="col-lg-7 cr-login-right-panel">
+      <form>
+        <div class="cr-row-2">
+          <h3 class="fw-bold">會員登入</h3>
+        </div>
+        <div class="cr-row-2">
+          <label for="loginInputAccount" class="form-label fw-bold">帳號</label>
+          <input type="account" name="account" class="form-control" id="loginInputAccount">
+        </div>
+        <div class="cr-row-2">
+          <label for="loginInputPassword" class="form-label fw-bold">密碼</label>
+          <input type="password" name="password" class="form-control" id="loginInputPassword">
+        </div>
+        <div class="d-flex justify-content-end cr-row-2">
+          <span class="m-2 btn btn-success login-button">登入</span>
+          <span class="m-2 btn btn-warning register-button"  data-bs-toggle="modal" data-bs-target="#registerModalBlock">註冊</span>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal: register a new account -->
+<div class="modal fade" id="registerModalBlock" tabindex="-1" aria-labelledby="registerModalTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalTitle">註冊</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="form-create-chatroom">
+          <div class="cr-row-dot5">
+            <label for="accountInput" class="form-label">帳號</label>
+            <input type="text" id="accountInput" class="form-control" name="account" required />            
+          </div>
+          <div class="cr-row-dot5">
+            <label for="passwordInput" class="form-label">密碼</label>
+            <input type="password" id="passwordInput" class="form-control" name="password" required />
+          </div>
+          <div class="cr-row-dot5">
+            <label for="passwordInput2" class="form-label">二次密碼</label>
+            <input type="password" id="passwordInput2" class="form-control" name="password2" required />
+          </div>
+          <div class="cr-row-dot5">
+            <label for="nicknameInput" class="form-label">暱稱</label>
+            <input type="text" id="nicknameInput" class="form-control" name="nickname" required />
+          </div>
+          <div class="cr-row-dot5">
+            <label for="emailInput" class="form-label">信箱</label>
+            <input type="email" id="emailInput" class="form-control" name="email" required />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-primary register-check-button">新增</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{ template "footer" }}
+{{ end }}
